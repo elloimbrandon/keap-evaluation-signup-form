@@ -4,15 +4,15 @@
 // (Axios) npm install axios
 // (Tailwind Css) npm install -D tailwindcss; npx tailwindcss init
 // (Tailwind Css) npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch
-// (Tailwind Css)
+// (Tailwind Css) <link href="/dist/index.css" rel="stylesheet">
 
 import "./App.css";
-// import axios from "axios"
+import axios from "axios"
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-Green font-open-sans">Hello World!</h1>
+      <h1 className="sm:text-mobile-h1 md:text-desktop-h1 text-Green font-open-sans">Hello World!</h1>
     </div>
   );
 }
@@ -29,4 +29,5 @@ export default App;
 
 // ** Notes **
 // * (Tailwind color text) - text-Green
+// * (Tailwind text size custom) - text-mobile-h1
 // * <h1 className="text-6xl font-open-sans">Welcome</h1>

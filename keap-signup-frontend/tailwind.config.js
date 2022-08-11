@@ -12,7 +12,7 @@ module.exports = {
       },
       screens: {
         sm: '375px',
-        md: '768px',
+        md: '900px',
         lg: '1440px',
         xl: '1728px',
       },
@@ -20,6 +20,23 @@ module.exports = {
         'open-sans': ['"Open Sans"', 'sans-serif'],
         'roboto': ['"Roboto"', 'sans-serif'],
       },
+      fontSize: {
+        'mobile-h1': '34px',
+        'mobile-h2': '26px',
+        'mobile-buttons': '20px',
+        'mobile-body': '16px',
+        'mobile-inputs': '18px',
+        'mobile-errors': '14px',
+        'mobile-legal': '12px',
+        'desktop-h1': '88px',
+        'desktop-h2': '40px',
+        'desktop-buttons': '20px',
+        'desktop-body': '20px',
+        'desktop-inputs': '18px',
+        'desktop-errors': '14px',
+        'desktop-legal': '12px',
+
+      }
     },
   },
   plugins: [],
