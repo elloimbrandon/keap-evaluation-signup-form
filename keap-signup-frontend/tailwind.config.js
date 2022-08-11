@@ -11,10 +11,10 @@ module.exports = {
         "Grey": "#666666",
       },
       screens: {
-        sm: '375px',
-        md: '900px',
-        lg: '1440px',
-        xl: '1728px',
+        "sm": '375px',
+        "md": '900px',
+        "lg": '1440px',
+        "xl": '1728px',
       },
       fontFamily: {
         'open-sans': ['"Open Sans"', 'sans-serif'],
