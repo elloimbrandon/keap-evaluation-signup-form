@@ -11,6 +11,7 @@ module.exports = {
         "Grey": "#666666",
       },
       screens: {
+        "xsm": '320px',
         "sm": '375px',
         "md": '900px',
         "lg": '1440px',

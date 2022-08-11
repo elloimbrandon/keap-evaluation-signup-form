@@ -14,19 +14,45 @@ import { ReactComponent as KeapLogo } from "./images/keap-logo.svg";
 
 function App() {
   return (
-    <div>
-      {/* <img src={require("./images/keap-logo.svg")} /> */}
-      <div className="container flex flex-row justify-center m-auto mt-3 mb-14 ">
-        <KeapLogo className="w-1/4" />
+    // consider not making whole container flex
+    <div className="flex flex-col items-center w-screen overflow-scroll">
+      {/* Keap logo div below */}
+      <div className="container flex flex-row justify-center m-auto mt-3 mb-8">
+        <KeapLogo className="w-20" />
       </div>
-      <div className="container flex flex-col justify-center m-auto -space-y-4 border border-black">
-        <h1 className="flex justify-center m-auto sm:text-mobile-h1 md:text-desktop-h1 font-roboto ">
+      {/* Text container Grow */}
+      <div className="container flex flex-col items-center m-auto -space-y-4">
+        <h1 className="font-roboto text-Black xsm:text-mobile-h1 sm:text-mobile-h1 md:text-desktop-h1">
           <mark className="text-Green bg-transparent">Grow&nbsp;</mark>your
           business
         </h1>
-        <h1 className="flex justify-center sm:text-mobile-h1 md:text-desktop-h1 font-roboto">
+        <h1 className="font-roboto xsm:text-mobile-h1 sm:text-mobile-h1 md:text-desktop-h1">
           with automation
         </h1>
+      </div>
+      {/* Text container sign up tips */}
+      <div className="flex flex-col items-center w-full m-auto mt-6 pt-8 bg-Blue">
+        <h2 className="font-roboto text-white mb-3 xsm:text-mobile-h2 sm:text-mobile-h2 md:text-desktop-h2">
+          Sign up to get tips
+        </h2>
+        {/* Text container for sign up tips description */}
+        <div className="container flex flex-col items-center pl-5 pr-5 pb-16">
+          <p className="font-open-sans text-white xsm:text-mobile-body sm:text-mobile-body md:text-desktop-body">
+            Capture leads automatically through built- <br /> in landing pages,
+            and automatically add <br /> them to your contacts with advanced
+            <br />
+            segmentation.
+          </p>
+        </div>
+      </div>
+      {/* Form container */}
+      {/* change height & width to match, maybe take out container too.*/}
+      <div className="flex flex-col h-60 w-[96%] items-start -translate-y-12 bg-white border border-black rounded-2xl">
+        <div className="container flex flex-col items-start p-1">
+          <p className="font-open-sans xsm:sm:text-mobile-inputs sm:text-mobile-inputs">
+            First name
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -39,6 +65,7 @@ export default App;
 // Initially set up file structure
 // Copy images
 // Start development of mobile version layout
+// Handle key form functions, consider error management early
 // Test api calls for success and fail responses
 
 // ** Notes **
