@@ -13,11 +13,17 @@ import axios from "axios";
 import { ReactComponent as KeapLogo } from "./images/keap-logo.svg";
 
 function App() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // For testing only
+    console.log(event);
+  };
+
   return (
     // consider not making whole container flex
-    <div className="flex flex-col items-center w-screen overflow-scroll">
+    <div className="flex flex-col items-center h-screen w-screen overflow-scroll">
       {/* Keap logo div below */}
-      <div className="container flex flex-row justify-center m-auto mt-3 mb-8">
+      <div className="container flex flex-row justify-center m-auto mt-3 mb-10">
         <KeapLogo className="w-20" />
       </div>
       {/* Text container Grow */}
@@ -31,12 +37,12 @@ function App() {
         </h1>
       </div>
       {/* Text container sign up tips */}
-      <div className="flex flex-col items-center w-full m-auto mt-6 pt-8 bg-Blue">
+      <div className="flex flex-col items-center w-full m-auto mt-8 pt-8 bg-Blue">
         <h2 className="font-roboto text-white mb-3 xsm:text-mobile-h2 sm:text-mobile-h2 md:text-desktop-h2">
           Sign up to get tips
         </h2>
         {/* Text container for sign up tips description */}
-        <div className="container flex flex-col items-center pl-5 pr-5 pb-16">
+        <div className="container flex flex-col items-center pl-5 pr-5 pb-20">
           <p className="font-open-sans text-white xsm:text-mobile-body sm:text-mobile-body md:text-desktop-body">
             Capture leads automatically through built- <br /> in landing pages,
             and automatically add <br /> them to your contacts with advanced
@@ -46,11 +52,56 @@ function App() {
         </div>
       </div>
       {/* Form container */}
-      {/* change height & width to match, maybe take out container too.*/}
-      <div className="flex flex-col h-60 w-[96%] items-start -translate-y-12 bg-white border border-black rounded-2xl">
-        <div className="container flex flex-col items-start p-1">
-          <p className="font-open-sans xsm:sm:text-mobile-inputs sm:text-mobile-inputs">
-            First name
+      {/* Change height & width to match, maybe take out container too.*/}
+      <div className="flex flex-col w-[96%] items-center -translate-y-11 bg-white rounded-2xl shadow-lg">
+        <div className="flex flex-col items-center pl-1 pt-4">
+          <form onSubmit={handleSubmit}>
+            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
+              First name
+            </p>
+            <input
+              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-2  xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+              type="text"
+              name="first-name"
+              placeholder="First name"
+              // change later {handleChange}
+              onChange={"Nothing"}
+              autoCorrect="off"
+            />
+            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
+              Last name
+            </p>
+            <input
+              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+              type="text"
+              name="last-name"
+              placeholder="Last name"
+              // change later {handleChange}
+              onChange={"Nothing"}
+              autoCorrect="off"
+            />
+            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
+              Email
+            </p>
+            <input
+              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+              type="text"
+              name="last-name"
+              placeholder="Email address"
+              // change later {handleChange}
+              onChange={"Nothing"}
+              autoCorrect="off"
+            />
+            <input
+              className="container flex justify-center h-14 font-roboto text-white rounded-3xl bg-Green sm:text-mobile-buttons"
+              type="submit"
+            />
+          </form>
+          <p className="container flex text-Grey mt-3 mb-4 sm:text-mobile-legal">
+            By clicking submit you agree to our
+            <mark className="text-Green bg-transparent">
+              &nbsp;Terms and Service
+            </mark>
           </p>
         </div>
       </div>
