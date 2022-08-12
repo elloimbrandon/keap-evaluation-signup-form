@@ -9,7 +9,8 @@
 // use yup for error text field
 
 import "./App.css";
-import axios from "axios";
+// import axios from "axios";
+import FormArea from "./components/formArea";
 import { ReactComponent as KeapLogo } from "./images/keap-logo.svg";
 
 function App() {
@@ -53,7 +54,8 @@ function App() {
       </div>
       {/* Form container */}
       {/* Change height & width to match, maybe take out container too.*/}
-      <div className="flex flex-col w-[96%] items-center -translate-y-11 bg-white rounded-2xl shadow-lg">
+      <FormArea />
+      {/* <div className="flex flex-col w-[96%] items-center -translate-y-11 bg-white rounded-2xl shadow-lg">
         <div className="flex flex-col items-center pl-1 pt-4">
           <form onSubmit={handleSubmit}>
             <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
@@ -105,7 +107,7 @@ function App() {
             </mark>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
