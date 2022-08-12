@@ -60,40 +60,41 @@ function App() {
               First name
             </p>
             <input
-              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-2  xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-2 caret-Green
+              outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
               type="text"
               name="first-name"
               placeholder="First name"
               // change later {handleChange}
               onChange={"Nothing"}
-              autoCorrect="off"
+              autoComplete="off"
             />
             <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
               Last name
             </p>
             <input
-              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
               type="text"
               name="last-name"
               placeholder="Last name"
               // change later {handleChange}
               onChange={"Nothing"}
-              autoCorrect="off"
+              autoComplete="off"
             />
             <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
               Email
             </p>
             <input
-              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
               type="text"
               name="last-name"
               placeholder="Email address"
               // change later {handleChange}
               onChange={"Nothing"}
-              autoCorrect="off"
+              autoComplete="off"
             />
             <input
-              className="container flex justify-center h-14 font-roboto text-white rounded-3xl bg-Green sm:text-mobile-buttons"
+              className="container flex justify-center h-14 font-roboto text-white rounded-3xl bg-Green cursor-pointer hover:bg-white hover:text-Black hover:border-2 hover:border-black sm:text-mobile-buttons"
               type="submit"
             />
           </form>
