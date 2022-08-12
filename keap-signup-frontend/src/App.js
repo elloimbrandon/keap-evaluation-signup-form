@@ -6,7 +6,7 @@
 // (Tailwind Css update config) npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch
 // (Tailwind Css verbose stylesheet) <link href="/dist/index.css" rel="stylesheet">
 // (Email Validator) npm install email-validator
-// (Profanity Check) npm install profanity-js
+// (Profanity Check) npm install profanity-finder
 
 // use yup for error text field
 
