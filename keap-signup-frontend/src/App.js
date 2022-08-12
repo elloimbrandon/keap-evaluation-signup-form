@@ -3,23 +3,18 @@
 // ** Packages **
 // (Axios) npm install axios
 // (Tailwind Css) npm install -D tailwindcss; npx tailwindcss init
-// (Tailwind Css) npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch
-// (Tailwind Css) <link href="/dist/index.css" rel="stylesheet">
+// (Tailwind Css update config) npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch
+// (Tailwind Css verbose stylesheet) <link href="/dist/index.css" rel="stylesheet">
+// (Email Validator) npm install email-validator
+// (Profanity Check) npm install profanity-js
 
 // use yup for error text field
 
 import "./App.css";
-// import axios from "axios";
 import FormArea from "./components/formArea";
 import { ReactComponent as KeapLogo } from "./images/keap-logo.svg";
 
 function App() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // For testing only
-    console.log(event);
-  };
-
   return (
     // consider not making whole container flex
     <div className="flex flex-col items-center h-screen w-screen overflow-scroll">
@@ -55,59 +50,6 @@ function App() {
       {/* Form container */}
       {/* Change height & width to match, maybe take out container too.*/}
       <FormArea />
-      {/* <div className="flex flex-col w-[96%] items-center -translate-y-11 bg-white rounded-2xl shadow-lg">
-        <div className="flex flex-col items-center pl-1 pt-4">
-          <form onSubmit={handleSubmit}>
-            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
-              First name
-            </p>
-            <input
-              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-2 caret-Green
-              outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
-              type="text"
-              name="first-name"
-              placeholder="First name"
-              // change later {handleChange}
-              onChange={"Nothing"}
-              autoComplete="off"
-            />
-            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
-              Last name
-            </p>
-            <input
-              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
-              type="text"
-              name="last-name"
-              placeholder="Last name"
-              // change later {handleChange}
-              onChange={"Nothing"}
-              autoComplete="off"
-            />
-            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
-              Email
-            </p>
-            <input
-              className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
-              type="text"
-              name="last-name"
-              placeholder="Email address"
-              // change later {handleChange}
-              onChange={"Nothing"}
-              autoComplete="off"
-            />
-            <input
-              className="container flex justify-center h-14 font-roboto text-white rounded-3xl bg-Green cursor-pointer hover:bg-white hover:text-Black hover:border-2 hover:border-black sm:text-mobile-buttons"
-              type="submit"
-            />
-          </form>
-          <p className="container flex text-Grey mt-3 mb-4 sm:text-mobile-legal">
-            By clicking submit you agree to our
-            <mark className="text-Green bg-transparent">
-              &nbsp;Terms and Service
-            </mark>
-          </p>
-        </div>
-      </div> */}
     </div>
   );
 }
@@ -121,6 +63,9 @@ export default App;
 // Start development of mobile version layout
 // Handle key form functions, consider error management early
 // Test api calls for success and fail responses
+// Handle verify email format before making api req.
+// Let api response dictate name errors
+// Create success page and possible "Back to sign up form"
 
 // ** Notes **
 // * (Tailwind color text) - text-Green

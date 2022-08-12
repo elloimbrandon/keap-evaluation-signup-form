@@ -2,6 +2,9 @@ import "../App.css";
 import { useState } from "react";
 import axios from "axios";
 
+const emailValidator = require("email-validator");
+const Profanity = require("profanity-js");
+
 const FormArea = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -44,7 +47,6 @@ const FormArea = () => {
             type="text"
             name="first_name"
             placeholder="First name"
-            // change later {handleChange}
             onChange={handleFirstName}
             autoComplete="off"
           />
@@ -56,7 +58,6 @@ const FormArea = () => {
             type="text"
             name="last_name"
             placeholder="Last name"
-            // change later {handleChange}
             onChange={handleLastName}
             autoComplete="off"
           />
@@ -68,7 +69,6 @@ const FormArea = () => {
             type="text"
             name="email_address"
             placeholder="Email address"
-            // change later {handleChange}
             onChange={handleEmail}
             autoComplete="off"
           />
