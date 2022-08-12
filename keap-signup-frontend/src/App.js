@@ -1,4 +1,4 @@
-// ** DON'T FORGET TO PUSH TO MAIN BRANCH! **
+// ** DON'T FORGET TO PUSH TO MAIN BRANCH AFTER STABLE VERSION! **
 
 // ** Packages **
 // (Axios) npm install axios
@@ -56,7 +56,7 @@ function App() {
 
 export default App;
 
-// ** Process Plan **
+// ** App Plan **
 // Install packages needed
 // Initially set up file structure
 // Copy images
@@ -70,4 +70,4 @@ export default App;
 // ** Notes **
 // * (Tailwind color text) - text-Green
 // * (Tailwind text size custom) - text-mobile-h1
-// * <h1 className="text-6xl font-open-sans">Welcome</h1>
+// * ex. <h1 className="text-6xl font-open-sans">Welcome</h1>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 
 const emailValidator = require("email-validator");
-const Profanity = require("profanity-js");
 
 const FormArea = () => {
   const [firstName, setFirstName] = useState("");
