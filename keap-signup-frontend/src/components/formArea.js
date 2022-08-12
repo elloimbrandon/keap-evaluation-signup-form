@@ -1,8 +1,6 @@
 import "../App.css";
 import { useState } from "react";
 import axios from "axios";
-// const querystring = require("querystring");
-// const qs = require("qs");
 
 const FormArea = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,11 +10,15 @@ const FormArea = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const url = "https://keap.com/api/project/leads";
-    const test =
-      "first_name=brandon&last_name=feltz&email_address=bfeltz@gmail.com";
-    axios.post(url, test).then((response) => {
-      console.log(response);
-    });
+    axios
+      .post(url, {
+        first_name: firstName,
+        last_name: lastName,
+        email_address: email,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   const handleFirstName = (event) => {
@@ -40,7 +42,7 @@ const FormArea = () => {
             className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-2 caret-Green
               outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
             type="text"
-            name="first name"
+            name="first_name"
             placeholder="First name"
             // change later {handleChange}
             onChange={handleFirstName}
@@ -52,7 +54,7 @@ const FormArea = () => {
           <input
             className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
             type="text"
-            name="last name"
+            name="last_name"
             placeholder="Last name"
             // change later {handleChange}
             onChange={handleLastName}
@@ -64,7 +66,7 @@ const FormArea = () => {
           <input
             className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
             type="text"
-            name="email address"
+            name="email_address"
             placeholder="Email address"
             // change later {handleChange}
             onChange={handleEmail}
