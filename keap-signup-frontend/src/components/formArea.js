@@ -1,15 +1,20 @@
 import "../App.css";
-import { useState, useEffect } from "react";
+// Not really using useEffect as im not making a get req
+// import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-// import { Validator } from "email-validator";
+// Finds profanity in given string or array
 import profanityFinder from "profanity-finder";
-
-// const profanityfinder = require("profanity-finder");
-
 const findprofanity = profanityFinder.findprofanity;
-
+// Validates email format is correct
 const emailValidator = require("email-validator");
 
+// Regex check to allow only letters no special characters or numbers
+const onlyLetters = (str) => {
+  return /^[a-zA-Z]+$/.test(str);
+};
+
+// Sign up form area
 const FormArea = () => {
   // State variables
   const [firstName, setFirstName] = useState("");
@@ -23,39 +28,36 @@ const FormArea = () => {
   const [signedUp, setSignedUp] = useState(false);
 
   // Renders updated state when state changes
-  useEffect(() => {
-    setFirstName(firstName);
-    setLastName(lastName);
-    setEmail(email);
-    setFirstNameCheck(firstNameCheck);
-    setLastNameCheck(lastNameCheck);
-    setEmailCheck(emailCheck);
-  }, []);
+  //   useEffect(() => {
+  //     setFirstName(firstName);
+  //     setLastName(lastName);
+  //     setEmail(email);
+  //     setFirstNameCheck(firstNameCheck);
+  //     setLastNameCheck(lastNameCheck);
+  //     setEmailCheck(emailCheck);
+  //   }, []);
 
-  // regex check to allow only letters no special characters or numbers
-  const onlyLetters = (str) => {
-    return /^[a-zA-Z]+$/.test(str);
+  // Setting state variables with text from form inputs
+  const handleFirstName = (event) => {
+    setFirstName(event.target.value);
+  };
+  const handleLastName = (event) => {
+    setLastName(event.target.value);
+  };
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
   };
 
-  // keep an eye on ToSting array method. Could effect rest of program
-
-  // Remember to take some console logs out
-
   const checkFirstNameFormat = () => {
-    if (
-      firstName.length <= 0 ||
-      onlyLetters(firstName) === false ||
-      findprofanity(toString(firstName)) === true
-    ) {
+    if (onlyLetters(firstName) === false || findprofanity(firstName) === true)
       setFirstNameCheck(false);
-    }
   };
 
   const checkLastNameFormat = () => {
     if (
       lastName.length <= 0 ||
       onlyLetters(lastName) === false ||
-      findprofanity(toString(lastName)) === true
+      findprofanity(lastName) === true
     )
       setLastNameCheck(false);
   };
@@ -63,11 +65,13 @@ const FormArea = () => {
   const checkEmailFormat = () => {
     if (
       email === "email@example.com" ||
-      emailValidator.validate(email) === false
+      emailValidator.validate(email) === false ||
+      findprofanity(email) === true
     )
       setEmailCheck(false);
   };
 
+  // Resets state after success
   const resetState = () => {
     setFirstName("");
     setLastName("");
@@ -77,76 +81,45 @@ const FormArea = () => {
     setEmailCheck(true);
   };
 
+  // Post request to keap api
   const getResponse = async () => {
     const url = "https://keap.com/api/project/leads";
     try {
-      const response = await axios
+      await axios
         .post(url, {
           first_name: firstName,
           last_name: lastName,
           email_address: email,
         })
         .then((response) => {
-          console.log(response.data.success);
+          //   console.log(response.data.success);
           if (response.data.success === true) {
             setSignedUp(true);
             resetState();
           }
         });
     } catch (err) {
-      console.log(err.response.data.errors);
+      checkEmailFormat();
       if (err.response.data.errors[0] === "First name is required.") {
-        // console.log("error hit");
-        // setFirstNameCheck(false);
         checkFirstNameFormat();
         checkLastNameFormat();
-        checkEmailFormat();
-        // console.log(firstNameCheck);
       }
     }
   };
 
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setEmailCheck(true);
     setFirstNameCheck(true);
     setLastNameCheck(true);
-
-    if (checkEmailFormat() == false) {
-      //   setEmail("");
-      return;
-    } else if (checkLastNameFormat() == false) {
-      return;
-    }
+    setEmailCheck(true);
     getResponse();
-    // checkFirstNameFormat();
 
-    // setFirstName("");
-    // setLastName("");
-
-    // const url = "https://keap.com/api/project/leads";
-
-    //   focus on getting response
-    // axios
-    //   .post(url, {
-    //     first_name: firstName,
-    //     last_name: lastName,
-    //     email_address: email,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //   });
-    // setEmail("");
-  }
-
-  const handleFirstName = (event) => {
-    setFirstName(event.target.value);
-  };
-  const handleLastName = (event) => {
-    setLastName(event.target.value);
-  };
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
+    // if (checkEmailFormat() == false) {
+    //   //   setEmail("");
+    //   return;
+    // } else if (checkLastNameFormat() == false) {
+    //   return;
+    // }
   };
 
   // Create another form component for errors
