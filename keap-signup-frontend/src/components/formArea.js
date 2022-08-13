@@ -25,6 +25,7 @@ const FormArea = () => {
   const [firstNameCheck, setFirstNameCheck] = useState(true);
   const [lastNameCheck, setLastNameCheck] = useState(true);
   const [emailCheck, setEmailCheck] = useState(true);
+  const [submitFail, setSubmitFail] = useState(true);
   const [signedUp, setSignedUp] = useState(false);
 
   // Renders updated state when state changes
@@ -49,8 +50,10 @@ const FormArea = () => {
   };
 
   const checkFirstNameFormat = () => {
-    if (onlyLetters(firstName) === false || findprofanity(firstName) === true)
+    if (onlyLetters(firstName) === false || findprofanity(firstName) === true) {
+      setSubmitFail(false);
       setFirstNameCheck(false);
+    }
   };
 
   const checkLastNameFormat = () => {
@@ -58,8 +61,10 @@ const FormArea = () => {
       lastName.length <= 0 ||
       onlyLetters(lastName) === false ||
       findprofanity(lastName) === true
-    )
+    ) {
+      setSubmitFail(false);
       setLastNameCheck(false);
+    }
   };
 
   const checkEmailFormat = () => {
@@ -67,19 +72,30 @@ const FormArea = () => {
       email === "email@example.com" ||
       emailValidator.validate(email) === false ||
       findprofanity(email) === true
-    )
+    ) {
+      setSubmitFail(false);
       setEmailCheck(false);
+    }
   };
 
+  //   const checkSubmitFail = () => {
+  //     if (
+  //       emailCheck === false ||
+  //       firstNameCheck === false ||
+  //       lastNameCheck === false
+  //     )
+  //       setSubmitFail(false);
+  //   };
+
   // Resets state after success
-  const resetState = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setFirstNameCheck(true);
-    setLastNameCheck(true);
-    setEmailCheck(true);
-  };
+  //   const resetState = () => {
+  //     setFirstName("");
+  //     setLastName("");
+  //     setEmail("");
+  //     setFirstNameCheck(true);
+  //     setLastNameCheck(true);
+  //     setEmailCheck(true);
+  //   };
 
   // Post request to keap api
   const getResponse = async () => {
@@ -95,12 +111,13 @@ const FormArea = () => {
           //   console.log(response.data.success);
           if (response.data.success === true) {
             setSignedUp(true);
-            resetState();
+            // resetState();
           }
         });
     } catch (err) {
       checkEmailFormat();
       if (err.response.data.errors[0] === "First name is required.") {
+        //   might be able to just use false logic right here, no need for extra functions
         checkFirstNameFormat();
         checkLastNameFormat();
       }
@@ -112,6 +129,7 @@ const FormArea = () => {
     setFirstNameCheck(true);
     setLastNameCheck(true);
     setEmailCheck(true);
+    setSubmitFail(true);
     getResponse();
 
     // if (checkEmailFormat() == false) {
@@ -125,7 +143,8 @@ const FormArea = () => {
   // Create another form component for errors
 
   return (
-    <div className="flex flex-col w-[96%] items-center -translate-y-11 bg-white rounded-2xl shadow-lg">
+    //   dont forget to remove border
+    <div className="flex flex-col w-[96%] md:w-[50%] md:h-[590px] md:justify-center items-center sm:-translate-y-11 md:-translate-y-24 bg-white rounded-2xl shadow-lg border border-black">
       {signedUp === true ? (
         <div className="flex flex-col w-[96%] h-[414px] items-center justify-center">
           <h2 className="font-open-sans xms:text-mobile-h2 sm:text-mobile-h2">
@@ -136,15 +155,15 @@ const FormArea = () => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col items-center pl-1 pt-4">
-          <form onSubmit={handleSubmit}>
-            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
+        <div className="flex flex-col md:items-center w-[90%] md:w-[80%] md:h-[85%] pt-4 md:pt-2">
+          <form onSubmit={handleSubmit} className="flex flex-col md:w-full">
+            <p className="font-open-sans pb-2 sm:text-mobile-inputs">
               First name
             </p>
             {firstNameCheck === true ? (
               <input
-                className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-2 caret-Green
-              outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                className="font-open-sans w-full md:w-full border border-Grey rounded-md p-3 mb-2 md:mb-9 caret-Green
+              outline-Blue sm:text-mobile-inputs sm:text-mobile-inputs"
                 type="text"
                 name="first_name"
                 placeholder="First name"
@@ -155,8 +174,8 @@ const FormArea = () => {
             ) : (
               <>
                 <input
-                  className="font-open-sans w-80 border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red
-              xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                  className="font-open-sans w-80 md:w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red
+                  sm:text-mobile-inputs sm:text-mobile-inputs"
                   type="text"
                   name="first_name"
                   placeholder="First name"
@@ -164,17 +183,17 @@ const FormArea = () => {
                   value={firstName}
                   autoComplete="off"
                 />
-                <p className="font-open-sans text-Red mb-3 xsm:text-mobile-errors sm:text-mobile-errors">
+                <p className="font-open-sans text-Red mb-3 md:mb-4 xsm:text-mobile-errors sm:text-mobile-errors">
                   First name required
                 </p>
               </>
             )}
-            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs">
+            <p className="font-open-sans pb-2 xsm:text-mobile-inputs sm:text-mobile-inputs">
               Last name
             </p>
             {lastNameCheck === true ? (
               <input
-                className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                className="font-open-sans w-full border border-Grey rounded-md p-3 mb-3 md:mb-9 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
                 type="text"
                 name="last_name"
                 placeholder="Last name"
@@ -185,7 +204,7 @@ const FormArea = () => {
             ) : (
               <>
                 <input
-                  className="font-open-sans w-80 border-2 border-Red rounded-md p-3 mb-3 caret-Green outline-Red xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                  className="font-open-sans w-80 md:w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red sm:text-mobile-inputs sm:text-mobile-inputs"
                   type="text"
                   name="last_name"
                   placeholder="Last name"
@@ -193,7 +212,7 @@ const FormArea = () => {
                   value={lastName}
                   autoComplete="off"
                 />
-                <p className="font-open-sans text-Red mb-3 xsm:text-mobile-errors sm:text-mobile-errors">
+                <p className="font-open-sans text-Red mb-3 md:mb-4 sm:text-mobile-errors">
                   Last name required
                 </p>
               </>
@@ -203,7 +222,7 @@ const FormArea = () => {
             </p>
             {emailCheck === true ? (
               <input
-                className="font-open-sans w-80 border border-Grey rounded-md p-3 mb-3 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                className="font-open-sans w-full border border-Grey rounded-md p-3 mb-3 md:mb-7 caret-Green outline-Blue xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
                 type="text"
                 name="email_address"
                 placeholder="Email address"
@@ -214,7 +233,7 @@ const FormArea = () => {
             ) : (
               <>
                 <input
-                  className="font-open-sans w-80 border-2 border-Red rounded-md p-3 mb-3 caret-Green  outline-Red xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                  className="font-open-sans w-80 md:w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
                   type="text"
                   name="email_address"
                   placeholder="Email address"
@@ -223,16 +242,28 @@ const FormArea = () => {
                   autoComplete="off"
                 />
                 <p className="font-open-sans text-Red mb-3 xsm:text-mobile-errors sm:text-mobile-errors">
-                  Email does not match format <br /> "someone@email.com"
+                  Email does not match format <br className="md:hidden" />
+                  "someone@email.com"
                 </p>
               </>
             )}
-            <input
-              className="container flex justify-center h-14 font-roboto text-white rounded-3xl bg-Green cursor-pointer hover:bg-white hover:text-Black hover:border-2 hover:border-black sm:text-mobile-buttons"
-              type="submit"
-            />
+            <div className="container flex flex-col md:flex-row">
+              <input
+                className="container flex justify-center h-14 md:w-[165px] font-roboto text-white rounded-[50px] bg-Green cursor-pointer hover:bg-white hover:text-Black hover:border-2 hover:border-black sm:text-mobile-buttons "
+                type="submit"
+              />
+              {submitFail === true ? null : (
+                <div className="container flex md:w-[220px] md:ml-3">
+                  <p className="font-open-sans text-Red mt-3 md:mt-2 sm:text-mobile-errors">
+                    There was a problem submitting.
+                    <br />
+                    Please try again.
+                  </p>
+                </div>
+              )}
+            </div>
           </form>
-          <p className="container flex text-Grey mt-3 mb-4 sm:text-mobile-legal">
+          <p className="container flex text-Grey mt-3 mb-4 md:mt-5 sm:text-mobile-legal">
             By clicking submit you agree to our
             <mark className="text-Green bg-transparent">
               &nbsp;Terms and Service

@@ -1,4 +1,6 @@
 // ** DON'T FORGET TO PUSH TO MAIN BRANCH AFTER STABLE VERSION! **
+// ** DON'T FORGET ABOUT SUBMIT ERROR BELOW BUTTON
+// ** Tad more optimization for normal screen sizes
 
 // ** Packages **
 // (Axios) npm install axios
@@ -19,37 +21,43 @@ function App() {
     // consider not making whole container flex
     <div className="flex flex-col items-center h-screen w-screen overflow-scroll">
       {/* Keap logo div below */}
-      <div className="container flex flex-row justify-center m-auto mt-3 mb-7">
+      <div className="container flex flex-row justify-center m-auto mt-3 mb-10">
         <KeapLogo className="w-20" />
       </div>
       {/* Text container Grow */}
-      <div className="container flex flex-col items-center m-auto -space-y-4">
-        <h1 className="font-roboto text-Black xsm:text-mobile-h1 sm:text-mobile-h1 md:text-desktop-h1">
-          <mark className="text-Green bg-transparent">Grow&nbsp;</mark>your
-          business
-        </h1>
-        <h1 className="font-roboto xsm:text-mobile-h1 sm:text-mobile-h1 md:text-desktop-h1">
-          with automation
+      {/* Might need (-space-y-4) (text-center) (span for color) */}
+      <div className="flex flex-row sm:w-[320px] md:w-[1200px] sm:mb-4 md:mb-32 md:mt-16 lg:3/4 text-center justify-center sm:leading-[2.2rem] md:leading-none">
+        <h1 className="font-roboto sm:text-mobile-h1 md:text-desktop-h1">
+          <span className="text-Green">Grow</span> your business with automation
         </h1>
       </div>
       {/* Text container sign up tips */}
-      <div className="flex flex-col items-center w-full m-auto mt-3 pt-8 bg-Blue">
-        <h2 className="font-roboto text-white mb-2 xsm:text-mobile-h2 sm:text-mobile-h2 md:text-desktop-h2">
-          Sign up to get tips
-        </h2>
-        {/* Text container for sign up tips description */}
-        <div className="container flex flex-col items-center pl-5 pr-5 pb-20">
-          <p className="font-open-sans text-white xsm:text-mobile-body sm:text-mobile-body md:text-desktop-body">
-            Capture leads automatically through built- <br /> in landing pages,
-            and automatically add <br /> them to your contacts with advanced
-            <br />
-            segmentation.
-          </p>
+      {/* Div flex wrapper for desktop row md:w-[65%] */}
+      <div className="flex sm:flex-col sm:items-center md:flex-row md:w-[65%] md:mt-6">
+        <div className="flex flex-col items-center w-screen m-auto mt-3 pt-8 bg-Blue sm:h-[36%] md:w-[55%] md:h-[360px] md:items-start md:rounded-l-2xl">
+          <h2
+            className="font-roboto text-white mb-2 sm:text-mobile-h2 md:text-desktop-h2 md:ml-20 md:mt-10 md:mb-3
+        "
+          >
+            Sign up to get tips
+          </h2>
+          {/* Text container for sign up tips description */}
+          {/* fix sentences for desktop!! */}
+          <div className="container flex flex-col items-center md:items-start pl-5 pr-5 pb-7">
+            <p className="container flex-row w-80 md:w-[80%] font-open-sans text-white sm:text-mobile-body md:text-desktop-body md:ml-16">
+              Capture leads automatically through built-in landing pages, and
+              automatically add them to your contacts with advanced
+              segmentation.
+            </p>
+            <p className="font-open-sans font-extrabold text-white ml-16 mt-8 underline decoration-4 underline-offset-4 text-desktop-body leading-4 sm:invisible md:visible">
+              Learn more
+            </p>
+          </div>
         </div>
+        {/* Form container */}
+        {/* Change height & width to match, maybe take out container too.*/}
+        <FormArea />
       </div>
-      {/* Form container */}
-      {/* Change height & width to match, maybe take out container too.*/}
-      <FormArea />
     </div>
   );
 }
@@ -71,3 +79,26 @@ export default App;
 // * (Tailwind color text) - text-Green
 // * (Tailwind text size custom) - text-mobile-h1
 // * ex. <h1 className="text-6xl font-open-sans">Welcome</h1>
+
+// graveyard
+
+/* <div className="container flex flex-col items-center m-auto -space-y-4 md:text-desktop-h1 lg:text-desktop-h1 border border-black">
+        <div className="flex flex-row">
+          <h1 className="font-roboto text-Black sm:text-mobile-h1 md:text-desktop-h1 lg:text-desktop-h1">
+            <mark className="text-Green bg-transparent md:text-desktop-h1 lg:text-desktop-h1">
+              Grow&nbsp;
+            </mark>
+            your business
+            your business with automation
+          </h1>
+          <h1>width</h1>
+        </div>
+        <div className="flex flex-row">
+          <h1 className="font-roboto mr-2 sm:text-mobile-h1 md:invisible">
+            with
+          </h1>
+          <h1 className="font-roboto sm:text-mobile-h1 md:text-desktop-h1 lg:text-desktop-h1">
+            automation
+          </h1>
+        </div>
+      </div> */
