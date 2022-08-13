@@ -127,7 +127,14 @@ const FormArea = () => {
   return (
     <div className="flex flex-col w-[96%] items-center -translate-y-11 bg-white rounded-2xl shadow-lg">
       {signedUp === true ? (
-        <div>Success!</div>
+        <div className="flex flex-col w-[96%] h-[414px] items-center justify-center">
+          <h2 className="font-open-sans xms:text-mobile-h2 sm:text-mobile-h2">
+            🎉Thank You!🎉
+          </h2>
+          <p className="font-open-sans text-center xms:text-mobile-body sm:text-mobile-body">
+            You're well on your way to automating <br /> your business!
+          </p>
+        </div>
       ) : (
         <div className="flex flex-col items-center pl-1 pt-4">
           <form onSubmit={handleSubmit}>
