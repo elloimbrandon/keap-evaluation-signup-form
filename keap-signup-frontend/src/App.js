@@ -19,7 +19,7 @@ function App() {
     // consider not making whole container flex
     <div className="flex flex-col items-center h-screen w-screen overflow-scroll">
       {/* Keap logo div below */}
-      <div className="container flex flex-row justify-center m-auto mt-3 mb-10">
+      <div className="container flex flex-row justify-center m-auto mt-3 mb-7">
         <KeapLogo className="w-20" />
       </div>
       {/* Text container Grow */}
@@ -33,8 +33,8 @@ function App() {
         </h1>
       </div>
       {/* Text container sign up tips */}
-      <div className="flex flex-col items-center w-full m-auto mt-8 pt-8 bg-Blue">
-        <h2 className="font-roboto text-white mb-3 xsm:text-mobile-h2 sm:text-mobile-h2 md:text-desktop-h2">
+      <div className="flex flex-col items-center w-full m-auto mt-3 pt-8 bg-Blue">
+        <h2 className="font-roboto text-white mb-2 xsm:text-mobile-h2 sm:text-mobile-h2 md:text-desktop-h2">
           Sign up to get tips
         </h2>
         {/* Text container for sign up tips description */}
