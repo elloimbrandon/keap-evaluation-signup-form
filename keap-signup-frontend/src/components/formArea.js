@@ -1,7 +1,7 @@
 import "../App.css";
 // Not really using useEffect as im not making a get req
 // import { useState, useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 // Finds profanity in given string or array
 import profanityFinder from "profanity-finder";
@@ -27,19 +27,23 @@ const FormArea = () => {
   const [emailCheck, setEmailCheck] = useState(true);
   const [submitFail, setSubmitFail] = useState(true);
   const [signedUp, setSignedUp] = useState(false);
+  //   const [submitButtonCol, setSubmitButtonChange] = useState(false);
+  const [submitButtonColorOn, setSubmitButtonColorOn] = useState(false);
 
   // Renders updated state when state changes
   //   useEffect(() => {
-  //     setFirstName(firstName);
-  //     setLastName(lastName);
-  //     setEmail(email);
-  //     setFirstNameCheck(firstNameCheck);
-  //     setLastNameCheck(lastNameCheck);
-  //     setEmailCheck(emailCheck);
-  //   }, []);
+  //     setSubmitButtonColorOn(false);
+  //     //   setFirstName(firstName);
+  //     //   setLastName(lastName);
+  //     //   setEmail(email);
+  //     //   setFirstNameCheck(firstNameCheck);
+  //     //   setLastNameCheck(lastNameCheck);
+  //     //   setEmailCheck(emailCheck);
+  //   }, [submitButtonColorOn]);
 
   // Setting state variables with text from form inputs
   const handleFirstName = (event) => {
+    // setSubmitButtonChange(true);
     setFirstName(event.target.value);
   };
   const handleLastName = (event) => {
@@ -120,16 +124,25 @@ const FormArea = () => {
         //   might be able to just use false logic right here, no need for extra functions
         checkFirstNameFormat();
         checkLastNameFormat();
+        // setSubmitButtonColorOn(false);
       }
     }
   };
 
+  //   const handleButtonColor = () => {
+  //     setSubmitButtonChange(true);
+  //     // setSubmitButtonChange(false);
+  //   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // console.log(event);
+    // handleSubmitButtonColorOff();
     setFirstNameCheck(true);
     setLastNameCheck(true);
     setEmailCheck(true);
     setSubmitFail(true);
+    // setSubmitButtonColorOn(false);
     getResponse();
 
     // if (checkEmailFormat() == false) {
@@ -140,18 +153,26 @@ const FormArea = () => {
     // }
   };
 
+  const handleSubmitButtonColorOn = () => {
+    setSubmitButtonColorOn(true);
+  };
+
+  const handleSubmitButtonColorOff = () => {
+    setSubmitButtonColorOn(false);
+  };
+
   // Create another form component for errors
 
   return (
     //   dont forget to remove border
-    <div className="flex flex-col w-[96%] md:w-[50%] md:h-[590px] md:justify-center items-center sm:-translate-y-11 md:-translate-y-24 bg-white rounded-2xl shadow-lg border border-black">
+    <div className="flex flex-col w-[96%] md:w-[50%] md:h-[590px] md:justify-center items-center sm:-translate-y-11 md:-translate-y-24 bg-white rounded-2xl shadow-lg">
       {signedUp === true ? (
         <div className="flex flex-col w-[96%] h-[414px] items-center justify-center">
-          <h2 className="font-open-sans xms:text-mobile-h2 sm:text-mobile-h2">
-            🎉Thank You!🎉
+          <h2 className="font-roboto sm:text-mobile-h2 md:text-desktop-h2">
+            🎉 Thank you! 🎉
           </h2>
-          <p className="font-open-sans text-center xms:text-mobile-body sm:text-mobile-body">
-            You're well on your way to automating <br /> your business!
+          <p className="container flex justify-center text-center font-open-sans w-[320px] md:w-[350px] md:mt-2 sm:text-mobile-body">
+            You're well on your way to automating your business!
           </p>
         </div>
       ) : (
@@ -162,7 +183,7 @@ const FormArea = () => {
             </p>
             {firstNameCheck === true ? (
               <input
-                className="font-open-sans w-full md:w-full border border-Grey rounded-md p-3 mb-2 md:mb-9 caret-Green
+                className="font-open-sans w-full border border-Grey rounded-md p-3 mb-2 md:mb-9 caret-Green
               outline-Blue sm:text-mobile-inputs sm:text-mobile-inputs"
                 type="text"
                 name="first_name"
@@ -170,11 +191,13 @@ const FormArea = () => {
                 onChange={handleFirstName}
                 value={firstName}
                 autoComplete="off"
+                onFocus={handleSubmitButtonColorOn}
+                onBlur={handleSubmitButtonColorOff}
               />
             ) : (
               <>
                 <input
-                  className="font-open-sans w-80 md:w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red
+                  className="font-open-sans w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red
                   sm:text-mobile-inputs sm:text-mobile-inputs"
                   type="text"
                   name="first_name"
@@ -182,6 +205,8 @@ const FormArea = () => {
                   onChange={handleFirstName}
                   value={firstName}
                   autoComplete="off"
+                  onFocus={handleSubmitButtonColorOn}
+                  onBlur={handleSubmitButtonColorOff}
                 />
                 <p className="font-open-sans text-Red mb-3 md:mb-4 xsm:text-mobile-errors sm:text-mobile-errors">
                   First name required
@@ -200,17 +225,21 @@ const FormArea = () => {
                 onChange={handleLastName}
                 value={lastName}
                 autoComplete="off"
+                onFocus={handleSubmitButtonColorOn}
+                onBlur={handleSubmitButtonColorOff}
               />
             ) : (
               <>
                 <input
-                  className="font-open-sans w-80 md:w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red sm:text-mobile-inputs sm:text-mobile-inputs"
+                  className="font-open-sans w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red sm:text-mobile-inputs sm:text-mobile-inputs"
                   type="text"
                   name="last_name"
                   placeholder="Last name"
                   onChange={handleLastName}
                   value={lastName}
                   autoComplete="off"
+                  onFocus={handleSubmitButtonColorOn}
+                  onBlur={handleSubmitButtonColorOff}
                 />
                 <p className="font-open-sans text-Red mb-3 md:mb-4 sm:text-mobile-errors">
                   Last name required
@@ -229,17 +258,21 @@ const FormArea = () => {
                 onChange={handleEmail}
                 value={email}
                 autoComplete="off"
+                onFocus={handleSubmitButtonColorOn}
+                onBlur={handleSubmitButtonColorOff}
               />
             ) : (
               <>
                 <input
-                  className="font-open-sans w-80 md:w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
+                  className="font-open-sans w-full border-2 border-Red rounded-md p-3 mb-2 caret-Green outline-Red xsm:text-mobile-inputs sm:text-mobile-inputs sm:text-mobile-inputs"
                   type="text"
                   name="email_address"
                   placeholder="Email address"
                   onChange={handleEmail}
                   value={email}
                   autoComplete="off"
+                  onFocus={handleSubmitButtonColorOn}
+                  onBlur={handleSubmitButtonColorOff}
                 />
                 <p className="font-open-sans text-Red mb-3 xsm:text-mobile-errors sm:text-mobile-errors">
                   Email does not match format <br className="md:hidden" />
@@ -248,10 +281,17 @@ const FormArea = () => {
               </>
             )}
             <div className="container flex flex-col md:flex-row">
-              <input
-                className="container flex justify-center h-14 md:w-[165px] font-roboto text-white rounded-[50px] bg-Green cursor-pointer hover:bg-white hover:text-Black hover:border-2 hover:border-black sm:text-mobile-buttons "
-                type="submit"
-              />
+              {submitButtonColorOn ? (
+                <input
+                  className="container flex justify-center h-14 md:w-[165px] font-roboto rounded-[50px] cursor-pointer bg-white text-Black border-2 border-black sm:text-mobile-buttons"
+                  type="submit"
+                />
+              ) : (
+                <input
+                  className="container flex justify-center h-14 md:w-[165px] font-roboto text-white rounded-[50px] bg-Green cursor-pointer hover:bg-white hover:text-Black hover:border-2 hover:border-black sm:text-mobile-buttons"
+                  type="submit"
+                />
+              )}
               {submitFail === true ? null : (
                 <div className="container flex md:w-[220px] md:ml-3">
                   <p className="font-open-sans text-Red mt-3 md:mt-2 sm:text-mobile-errors">

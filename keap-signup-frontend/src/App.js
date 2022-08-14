@@ -33,8 +33,8 @@ function App() {
       </div>
       {/* Text container sign up tips */}
       {/* Div flex wrapper for desktop row md:w-[65%] */}
-      <div className="flex sm:flex-col sm:items-center md:flex-row md:w-[65%] md:mt-6">
-        <div className="flex flex-col items-center w-screen m-auto mt-3 pt-8 bg-Blue sm:h-[36%] md:w-[55%] md:h-[360px] md:items-start md:rounded-l-2xl">
+      <div className="flex sm:flex-col sm:items-center md:flex-row md:w-[1200px] md:mt-6">
+        <div className="flex flex-col items-center w-screen m-auto mt-3 pt-8 bg-Blue sm:h-[36%] md:w-[620px] md:h-[360px] md:items-start md:rounded-l-2xl">
           <h2
             className="font-roboto text-white mb-2 sm:text-mobile-h2 md:text-desktop-h2 md:ml-20 md:mt-10 md:mb-3
         "
@@ -44,7 +44,7 @@ function App() {
           {/* Text container for sign up tips description */}
           {/* fix sentences for desktop!! */}
           <div className="container flex flex-col items-center md:items-start pl-5 pr-5 pb-7">
-            <p className="container flex-row w-80 md:w-[80%] font-open-sans text-white sm:text-mobile-body md:text-desktop-body md:ml-16">
+            <p className="container flex-row w-[320px] md:w-[80%] font-open-sans text-white sm:text-mobile-body md:text-desktop-body md:ml-16">
               Capture leads automatically through built-in landing pages, and
               automatically add them to your contacts with advanced
               segmentation.
@@ -74,6 +74,18 @@ export default App;
 // Handle verify email format before making api req.
 // Let api response dictate name errors
 // Create success page and possible "Back to sign up form"
+
+// TO-DO SUNDAY
+// error form input length needs to be 100% for responsive(!)
+// Fix success screen on desktop.
+// Break error checks into components
+// Clean
+// Do box shadow for desktop top
+// Review tasks again
+// Test Test Test
+// Check to see if input error checks even needed
+// See if you can put functions into another file
+// Consider using arbitrary widths for desktop to make it responsive still but words not getting messed up
 
 // ** Notes **
 // * (Tailwind color text) - text-Green
