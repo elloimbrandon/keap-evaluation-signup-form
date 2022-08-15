@@ -1,14 +1,5 @@
-// import "../App.css";
-// consider deleting App.css
-
 import React, { useState } from "react";
 import axios from "axios";
-
-import {
-  checkEmailFormat,
-  checkInputNameFormat,
-} from "./ParsingFunctions/InputHandlers";
-
 import FirstNameForm from "./FormArea/FirstNameForm";
 import LastNameForm from "./FormArea/LastNameForm";
 import EmailForm from "./FormArea/EmailForm";
@@ -18,6 +9,10 @@ import EmailErrorForm from "./ErrorFormArea/EmailErrorForm";
 import SuccessSignUp from "./FormArea/SuccessSignUp";
 import ErrorSignUp from "./FormArea/ErrorSignUp";
 import TermsAndService from "./FormArea/TermsAndService";
+import {
+  checkEmailFormat,
+  checkInputNameFormat,
+} from "./ParsingFunctions/InputHandlers";
 
 const SignUpForm = () => {
   const [firstName, setFirstName] = useState("");
