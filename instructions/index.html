@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+	<title>Keap Signup</title>
+
+	<script>
+            // this sample code is just to demo how to connect to the API. You may use any module that you prefer.
+            // your code should handle successful or unsuccessful responses from the API
+            // all three fields are required, and an invalid email address will fail (email@example.com will also fail)
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://keap.com/api/project/leads');
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = () => {
+                console.log(JSON.parse(xhr.response));
+            };
+            const params = 'param1=a&param2=b';
+            xhr.send(params);
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
